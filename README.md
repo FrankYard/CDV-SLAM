@@ -18,7 +18,7 @@ Next install the cdvslam package with cuda extension
 wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip
 unzip eigen-3.4.0.zip -d thirdparty
 
-# install DPVO
+# install CDVO
 pip install .
 ```
 
@@ -140,15 +140,8 @@ Make sure you have run `./download_models_and_data.sh`. Your directory structure
 
 To train (log files will be written to `runs/<your name>`). Model will be run on the validation split every 10k iterations
 ```
-python train.py --steps=240000 --lr=0.00008 --name=<your name>
+python train_cdvo.py --steps=240000 --lr=0.00008 --name=<your name>
 ```
-
-## Change Log
-* **Aug 2022**: Initial release
-* **Sep 2022**: Add link to docker
-* **Mar 2023**: Google Colab, TUM + ICL-NUIM evaluation code, flags for saving output
-* **July 2024**: Add DPV-SLAM. Update output-saving utilities.
-
 
 ## Acknowledgements
 This project is built upon
