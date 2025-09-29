@@ -21,8 +21,9 @@ unzip eigen-3.4.0.zip -d thirdparty
 # install CDVO
 pip install .
 ```
+To download the model parameters, use the following link [Dropbox](https://www.dropbox.com/scl/fo/frlx9r8wy3zb01eqtb5k0/ADoKPJcohVUpz_6gEMaUec0?rlkey=h54d7dxmocysum8efcpeckpa5&st=ipzsphh1&dl=0).
 
-The code is backword compatible with DPVO/DPV-SLAM. If you what to use DPVO/DPV-SLAM, run the following:
+(Optional)The code is backword compatible with DPVO/DPV-SLAM. If you what to use DPVO/DPV-SLAM, run the following:
 ```bash
 # download models and data (~2GB)
 ./download_dpvo_models_and_data.sh
