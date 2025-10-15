@@ -72,19 +72,16 @@ def run(cfg, network, kittidir, sequence, stride=1, viz=False, show_img=False):
         (t, image, intrinsics) = queue.get()
         if t < 0: break
 
-        image = torch.as_tensor(image, device='cuda').permute(2,0,1)
-        intrinsics = torch.as_tensor(intrinsics, dtype=torch.float, device='cuda')
+        if slam is None:
+            H, W, _ = image.shape
+            slam = SLAM(cfg, network, ht=H, wd=W, viz=viz)
+
+        image = torch.from_numpy(image).permute(2,0,1).cuda()
+        intrinsics = torch.from_numpy(intrinsics).float().cuda()
 
         if show_img:
             show_image(image, 1)
 
-        if slam is None:
-            slam = SLAM(cfg, network, ht=image.shape[-2], wd=image.shape[-1], viz=viz)
-
-        intrinsics = intrinsics.cuda()
-
-        # if t >= 765 // 2:
-        #     input('Waiting..')
         with Timer("SLAM", enabled=False):
             slam(t, image, intrinsics)
 

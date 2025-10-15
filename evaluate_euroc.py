@@ -40,14 +40,15 @@ def run(cfg, network, imagedir, calib, stride=1, viz=False, show_img=False):
         (t, image, intrinsics) = queue.get()
         if t < 0: break
 
+        if slam is None:
+            H, W, _ = image.shape
+            slam = SLAM(cfg, network, ht=H, wd=W, viz=viz)
+
         image = torch.from_numpy(image).permute(2,0,1).cuda()
         intrinsics = torch.from_numpy(intrinsics).cuda()
 
         if show_img:
             show_image(image, 1)
-
-        if slam is None:
-            slam = SLAM(cfg, network, ht=image.shape[1], wd=image.shape[2], viz=viz)
 
         with Timer("SLAM", enabled=False):
             slam(t, image, intrinsics)

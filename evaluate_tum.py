@@ -63,14 +63,14 @@ def run(cfg, network, scene_dir, sequence, stride=1, viz=False, show_img=False):
         (t, images, intrinsics) = queue.get()
         if t < 0: break
 
+        if slam is None:
+            slam = SLAM(cfg, network, ht=images.shape[-2], wd=images.shape[-1], viz=viz)
+
         images = torch.as_tensor(images, device='cuda')
         intrinsics = torch.as_tensor(intrinsics, dtype=torch.float, device='cuda')
 
         if show_img:
             show_image(images[0], 1)
-
-        if slam is None:
-            slam = SLAM(cfg, network, ht=images.shape[-2], wd=images.shape[-1], viz=viz)
 
         intrinsics = intrinsics.cuda()
 
