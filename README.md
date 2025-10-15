@@ -1,7 +1,7 @@
 # CDV-SLAM: Compact Deep Visual SLAM via Unified Semantic and Geometric perception
-<center>
-<img src="misc\overview-dark.png", width=70%/>
-</center>
+<div align="center">
+<img src="misc\overview-dark.png" width="70%">
+</div>
 
 ## Setup
 The code was tested on Ubuntu>=18.04 and Windows 10.</br>
