@@ -4,7 +4,7 @@ The code was tested on Ubuntu>=18.04 and Windows 10.</br>
 
 Clone the repo
 ```
-git clone https://github.com/XX --recursive
+git clone https://github.com/FrankYard/CDV-SLAM
 cd CDV-SLAM
 ```
 Create and activate the anaconda environment
@@ -39,6 +39,7 @@ sudo apt-get install -y libopencv-dev
 ```
 Step 2. Install DBoW2
 ```bash
+git clone https://github.com/lahavlipson/DBoW2
 cd DBoW2
 mkdir -p build && cd build
 cmake .. # tested with cmake 3.22.1 and gcc/cc 11.4.0 on Ubuntu
